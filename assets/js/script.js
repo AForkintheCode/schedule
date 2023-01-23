@@ -25,7 +25,8 @@ $(document).ready(function () {
 var today = dayjs();
 $('#currentDay').text(today.format('[Today is] MMM D, YYYY'));
 $('#currentTime').text(today.format('[The time is:] hh:mm'));
-var current = today.format('hA');
+var current = today.format('HA');
+var hour;
 
 // $('#currentHour').text(current);
 console.log("The time is currently " + current)
@@ -36,9 +37,9 @@ console.log("The time is currently " + current)
     //time
     col1 = $(`<div class = "col-2 col-md-1 hour">${displayTime(i)}</div>`)
     //memo
-    col2 = $(`<textarea class = "col-8 col-md-10 data-input="${i}" id="inputText${i}" rows = "3"></textarea>`)
+    col2 = $(`<textarea class = "col-8 col-md-10 data-input="${i}" id="postit${i}" rows = "3"></textarea>`)
     //save
-    col3 = $('<button class = "btn saveBtn col-2 col-md-1" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button>') 
+    col3 = $(`<button class = "btn saveBtn col-2 col-md-1" data-id="${i}" aria-label="save"><i class="fas fa-save" aria-hidden="true"></i></button>`) 
     //create time-block
     row.append(col1, col2, col3)
     $('#dayplanner').append(row)    
@@ -74,22 +75,22 @@ console.log("The time is currently " + current)
 
   //time-block
   function displayTime(hour){
-    var meridian = ""
+    var AoP = ""
     if (hour <=12){
-      meridian = "AM"
+      AoP = "AM"
     }else{
-      meridian = "PM"
+      AoP = "PM"
     }
     hour = hour % 12
     hour = hour ? hour : 12
-    return hour + "" + meridian
+    return hour + "" + AoP
   }
 
   $("button.saveBtn").click(function(e){
     var id = $(this).data("id")
     console.log(id)
-    var inputText = $(this).parent().siblings().find("input").val()
-    localStorage.setItem(id,inputText)
+    var inputText = $(this).parent().siblings().find("postit").val()
+    localStorage.setItem(id, inputText)
   })
 
 
@@ -108,9 +109,9 @@ $('.hour').css({'background-color': '#000000', 'color': '#ffffff'})
 function getlocalStorage(hour){
   let inputval = localStorage.getItem(hour)
   if(true){
-    $("input").data(`input${hour}`)
+    // $("input").data(`input${hour}`)
    var text= $(`input#inputText${hour}`).val(inputval)
-   console.log("Hello mother" + text)
+   console.log(text)
   }
 }
 // //end copied code
