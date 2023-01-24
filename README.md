@@ -1,7 +1,7 @@
-### Description
+## Description
 A daily planner split into hourly blocks.  
 
-### Installation
+## Installation
 n/a
 
 ## Usage
