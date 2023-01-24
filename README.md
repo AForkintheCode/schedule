@@ -1,5 +1,5 @@
 ## Description
-A daily planner split into hourly blocks.  Get started [here!]()
+A daily planner split into hourly blocks.  Get started [here!](https://aforkinthecode.github.io/schedule/)
 ![schedule](./assets/screenshot.JPG)
 
 ## Installation
